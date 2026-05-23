@@ -16,10 +16,10 @@ from app.routes import resume, jd, generation, export_routes, validation, previe
 settings = get_settings()
 logger = structlog.get_logger()
 
-# Rate limiter backed by Redis
+# Rate limiter — uses Redis if available, falls back to in-memory
 limiter = Limiter(
     key_func=get_remote_address,
-    storage_uri=os.getenv("REDIS_URL", "redis://localhost:6379"),
+    storage_uri=os.getenv("REDIS_URL", "memory://"),
     default_limits=[f"{settings.rate_limit_requests_per_minute}/minute"],
 )
 
@@ -44,8 +44,8 @@ app = FastAPI(
 # ── Middleware ────────────────────────────────────────────────────────────────
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.cors_origins,
-    allow_credentials=True,
+    allow_origins=["*"],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
