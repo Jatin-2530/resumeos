@@ -1,6 +1,5 @@
-import type { Config } from "tailwindcss";
-
-const config: Config = {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -13,7 +12,6 @@ const config: Config = {
         mono: ["JetBrains Mono", "Fira Code", "monospace"],
       },
       colors: {
-        // Neutral professional palette
         surface: {
           0: "#FFFFFF",
           1: "#F9FAFB",
@@ -77,5 +75,3 @@ const config: Config = {
   },
   plugins: [],
 };
-
-export default config;
