@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-surface-1 text-ink-1;
+  }
+
+  ::selection {
+    @apply bg-accent-muted;
+  }
+}
+
+@layer components {
+  /* Resume preview typography — mirrors document fonts */
+  .resume-text {
+    font-family: 'Calibri', 'Carlito', 'Liberation Sans', sans-serif;
+    font-size: 10pt;
+    line-height: 1.3;
+  }
+
+  /* Overflow indicator */
+  .overflow-indicator {
+    @apply border-l-2 border-danger pl-2;
+  }
+
+  /* Warning indicator */
+  .warning-indicator {
+    @apply border-l-2 border-warning pl-2;
+  }
+
+  /* Score ring */
+  .score-badge {
+    @apply inline-flex items-center justify-center w-12 h-12 rounded-full text-sm font-semibold;
+  }
+
+  /* Scrollbar */
+  .custom-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: theme('colors.surface.3') transparent;
+  }
+  .custom-scroll::-webkit-scrollbar {
+    width: 6px;
+  }
+  .custom-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scroll::-webkit-scrollbar-thumb {
+    @apply bg-surface-3 rounded-full;
+  }
+}
